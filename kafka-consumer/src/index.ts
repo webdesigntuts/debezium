@@ -85,10 +85,12 @@ const sqlConfig = {
             if (before.hasOwnProperty(key) && after.hasOwnProperty(key)) {
               if (before[key] !== after[key]) {
                 console.log(`${key} CHANGED: ${before[key]} => ${after[key]}`);
-                // You can add your code to write to AUDITDB here
+                // You can add your code to write to AUDITDB here (this is for a single field cause we are running a loop for each property in the object)
               }
             }
           }
+
+          //here you can add your code to write to AUDITDB (this is for the whole row or a single field or whatever depending on the query we run)
         } else {
           console.log("TOPIC DOES NOT MATCH");
         }
