@@ -78,13 +78,17 @@ const sqlConfig = {
           const event = value as ICustomerEvent;
           console.log(event.payload);
 
-          if (
-            event.payload.after.first_name !== event.payload.before.first_name
-          ) {
-            console.log("FIRST NAME CHANGED");
-            //WRITE TO AUDITDB HERE NO IDEA OF SQL SYNTAX
+          const before = event.payload.before;
+          const after = event.payload.after;
+
+          for (const key in before) {
+            if (before.hasOwnProperty(key) && after.hasOwnProperty(key)) {
+              if (before[key] !== after[key]) {
+                console.log(`${key} CHANGED: ${before[key]} => ${after[key]}`);
+                // You can add your code to write to AUDITDB here
+              }
+            }
           }
-          //compare the before and after values and print which field changed
         } else {
           console.log("TOPIC DOES NOT MATCH");
         }
