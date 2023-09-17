@@ -1,0 +1,15 @@
+{
+    "ignore": [
+        ".git",
+        "node_modules/",
+        "dist/",
+        "coverage/"
+    ],
+    "watch": [
+        "src/*"
+    ],
+    "ext": "js, json, ts",
+    "execMap": {
+        "ts": "node --loader ts-node/esm -r tsconfig-paths/register"
+    }
+}

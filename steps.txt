@@ -1,0 +1,22 @@
+1)SET DEBEZIUM_VERSION IN .ENV FILE
+
+2)Running SQLCMD in a Docker Container
+
+@ATTACH TO CONTAINER COMMAND:
+docker exec -it "tutorial-sqlserver-1" /bin/sh
+USE SQL_CMD COMMAND:
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Password!'
+@ARTICLE:
+https://khalidabuhakmeh.com/running-sql-server-queries-in-docker
+3) RUN THE SQL FILE (IF  SQL FILE COPIED AT THE ROOT OF THE CONTAINER'S FILE SYSTEM)
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Password!' -i dbinit.sql
+4) SEE README.MD FOR SQL SERVER <----
+
+@ATTACH TO NODE SERVER (KAFKA TOPIC CONSUMER)
+docker attach "tutorial-kafka-consumer-1" 
+
+//COMANDS
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Password!'
+
+@POST CONNECTOR_DATA TO KAFKA CONNECT
+curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d ''
